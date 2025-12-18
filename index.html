@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek - IMPETUS Prep (DB & UI Specialist)</title>
+    <style>
+        :root {
+            --bg-primary: #020617;
+            --bg-secondary: #0f172a;
+            --bg-tertiary: #1e293b;
+            --accent: #06b6d4;
+            --accent-hover: #22d3ee;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --code-bg: #000000;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --header-height: 60px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f1f5f9;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f8fafc;
+            --accent: #0891b2;
+            --accent-hover: #0e7490;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+            --success: #059669;
+            --danger: #dc2626;
+            --warning: #d97706;
+            --code-bg: #f1f5f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* --- Mobile Header --- */
+        #mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            z-index: 1001;
+            padding: 0 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Sidebar --- */
+        #sidebar {
+            width: 320px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+            padding-bottom: 2rem;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+
+        .nav-header {
+            padding: 2.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(to bottom right, var(--bg-secondary), var(--bg-primary));
+        }
+
+        .nav-header h2 {
+            font-size: 1.25rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav-item {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-left: 4px solid transparent;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-item:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background-color: var(--bg-tertiary);
+            color: var(--accent);
+            border-left-color: var(--accent);
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+
+        .progress-dot.completed {
+            background: var(--success);
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        /* --- Main Content --- */
+        #main-wrapper {
+            margin-left: 320px;
+            flex-grow: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: radial-gradient(circle at 2px 2px, var(--border) 1px, transparent 0);
+            background-size: 40px 40px;
+            width: 100%;
+        }
+
+        #content-container {
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Components --- */
+        .card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 { font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -0.025em; }
+        h2 { font-size: 1.5rem; margin-bottom: 1.2rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 4px; }
+        h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--text-primary); }
+        
+        p, li { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+        strong { color: var(--text-primary); }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: fit-content;
+        }
+
+        .btn-primary { background-color: var(--accent); color: var(--bg-primary); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
+
+        /* --- Code & Data --- */
+        .code-block {
+            background: var(--code-bg);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.2rem 0;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow-x: auto;
+        }
+
+        pre { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #e2e8f0; line-height: 1.5; }
+
+        .table-wrapper { 
+            overflow-x: auto; 
+            margin: 1.5rem 0; 
+            border-radius: 8px; 
+            border: 1px solid var(--border); 
+            -webkit-overflow-scrolling: touch;
+        }
+        table { width: 100%; border-collapse: collapse; background: var(--bg-secondary); min-width: 500px; }
+        th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        th { background: var(--bg-tertiary); color: var(--accent); }
+
+        /* --- Specific UI Widgets --- */
+        .grid-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-val { font-size: 2.5rem; font-weight: 900; color: var(--accent); }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Responsive Logic --- */
+        @media (max-width: 768px) {
+            #mobile-header { display: flex; }
+            #sidebar { transform: translateX(-100%); width: 280px; }
+            #sidebar.active { transform: translateX(0); }
+            #sidebar-overlay.active { display: block; }
+            #main-wrapper { margin-left: 0; padding: 5rem 1rem 2rem 1rem; }
+            .grid-dashboard { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8rem; }
+            .card { padding: 1.5rem; }
+            .btn { width: 100%; }
+        }
+
+        /* --- Mock Mode --- */
+        #mock-container {
+            border: 2px solid var(--accent);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        #question-area {
+            font-size: 1.2rem;
+            font-weight: 600;
+            min-height: 100px;
+            margin: 1.5rem 0;
+            line-height: 1.4;
+        }
+
+        .quiz-option {
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .quiz-option.correct { background: var(--success); color: white; }
+        .quiz-option.wrong { background: var(--danger); color: white; }
+
+    </style>
+</head>
+<body data-theme="dark">
+
+    <div id="sidebar-overlay" onclick="toggleMenu()"></div>
+
+    <header id="mobile-header">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <span style="font-weight: 800; font-size: 0.9rem; color: var(--accent)">IMPETUS PREP</span>
+        <button class="btn btn-outline" style="padding: 5px 10px; font-size: 0.7rem;" onclick="toggleTheme()">🌓</button>
+    </header>
+
+    <nav id="sidebar">
+        <div class="nav-header">
+            <h2>IMPETUS Prep</h2>
+            <p>Abhishek Paliwal (MIT)</p>
+            <p><small>DB & UI/UX Specialist</small></p>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item active" onclick="navigate('dashboard')">Dashboard <div class="progress-dot" id="dot-dashboard"></div></li>
+            <li class="nav-item" onclick="navigate('dbms')">DBMS Core <div class="progress-dot" id="dot-dbms"></div></li>
+            <li class="nav-item" onclick="navigate('uiux')">UI/UX Design <div class="progress-dot" id="dot-uiux"></div></li>
+            <li class="nav-item" onclick="navigate('oops')">OOPS Mastery <div class="progress-dot" id="dot-oops"></div></li>
+            <li class="nav-item" onclick="navigate('dsa')">DSA Masterclass <div class="progress-dot" id="dot-dsa"></div></li>
+            <li class="nav-item" onclick="navigate('programming')">Data Coding <div class="progress-dot" id="dot-programming"></div></li>
+            <li class="nav-item" onclick="navigate('os')">OS & Storage <div class="progress-dot" id="dot-os"></div></li>
+            <li class="nav-item" onclick="navigate('cn')">Networks & API <div class="progress-dot" id="dot-cn"></div></li>
+            <li class="nav-item" onclick="navigate('cloud')">Cloud & S3 <div class="progress-dot" id="dot-cloud"></div></li>
+            <li class="nav-item" onclick="navigate('projects')">Projects Guide <div class="progress-dot" id="dot-projects"></div></li>
+            <li class="nav-item" onclick="navigate('hr')">HR Strategy <div class="progress-dot" id="dot-hr"></div></li>
+            <li class="nav-item" onclick="navigate('mock')">Mock Engine</li>
+        </ul>
+    </nav>
+
+    <main id="main-wrapper">
+        <div id="content-container">
+            <!-- Dynamic Content -->
+        </div>
+    </main>
+
+    <script>
+        // --- Core Logic ---
+        const TARGET_DATE = new Date("2025-12-19T09:00:00");
+        const STATE = {
+            progress: JSON.parse(localStorage.getItem('abhishek_prep_v2')) || {},
+            theme: 'dark'
+        };
+
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('sidebar-overlay').classList.toggle('active');
+        }
+
+        function toggleTheme() {
+            STATE.theme = STATE.theme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', STATE.theme);
+        }
+
+        function navigate(id) {
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(i => i.classList.remove('active'));
+            const activeLink = Array.from(items).find(i => i.innerText.toLowerCase().includes(id.substring(0,3)));
+            if(activeLink) activeLink.classList.add('active');
+
+            const container = document.getElementById('content-container');
+            container.innerHTML = PAGES[id] ? PAGES[id]() : PAGES['dashboard']();
+            
+            if(window.innerWidth <= 768) toggleMenu();
+            window.scrollTo(0,0);
+            updateProgressDots();
+            if(id === 'dsa') initDSAVisualizer();
+        }
+
+        function markDone(topic) {
+            STATE.progress[topic] = true;
+            localStorage.setItem('abhishek_prep_v2', JSON.stringify(STATE.progress));
+            updateProgressDots();
+            navigate(topic);
+        }
+
+        function updateProgressDots() {
+            Object.keys(PAGES).forEach(key => {
+                const dot = document.getElementById(`dot-${key}`);
+                if(dot && STATE.progress[key]) dot.classList.add('completed');
+            });
+        }
+
+        // --- Pages Content ---
+        const PAGES = {
+            dashboard: () => {
+                const now = new Date();
+                const diff = TARGET_DATE - now;
+                const d = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
+                const h = Math.max(0, Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                const completed = Object.values(STATE.progress).filter(Boolean).length;
+
+                return `
+                    <h1>Interview Dashboard</h1>
+                    <div class="grid-dashboard">
+                        <div class="card">
+                            <h3>Days to Impetus</h3>
+                            <div class="stat-val">${d}d ${h}h</div>
+                            <p>December 19, 2025</p>
+                        </div>
+                        <div class="card">
+                            <h3>Topics Mastered</h3>
+                            <div class="stat-val">${completed}/11</div>
+                            <p>${Math.round((completed/11)*100)}% Readiness</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h2>The Specialist Strategy</h2>
+                        <p>Impetus Technologies values <strong>Data Platform Product Engineers</strong>. As a candidate strong in DBMS and UI/UX, focus your narrative on "The Bridge"—how you make complex backend data digestible for end-users.</p>
+                        <button class="btn btn-primary" onclick="navigate('dbms')">Explore DBMS Strength</button>
+                    </div>
+                `;
+            },
+
+            dbms: () => `
+                <h1>DBMS & Data Engineering</h1>
+                <div class="card">
+                    <h2>Advanced Normalization (BCNF)</h2>
+                    <p>Impetus often tests the edge cases of 3NF vs BCNF. Remember: A table is in <strong>BCNF</strong> if for every functional dependency X → Y, X is a super key.</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><th>Problem</th><th>Solution</th><th>Why?</th></tr>
+                            <tr><td>Redundancy</td><td>Normalization</td><td>Saves storage, ensures integrity.</td></tr>
+                            <tr><td>Slow Queries</td><td>Indexing</td><td>B+ Tree lookups in O(log n).</td></tr>
+                            <tr><td>Lost Updates</td><td>Transactions (ACID)</td><td>Ensures atomic operations.</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Query Optimization & Execution Plans</h2>
+                    <p>When a query is slow, we use <code>EXPLAIN ANALYZE</code>. Look for <strong>Full Table Scans</strong> vs <strong>Index Scans</strong>.</p>
+                    <p><strong>Query Tuning:</strong> Avoid <code>SELECT *</code>. Use specific columns to reduce I/O overhead.</p>
+                </div>
+
+                <div class="card">
+                    <h2>Modern DB Topics</h2>
+                    <ul>
+                        <li><strong>NoSQL:</strong> BASE consistency vs ACID.</li>
+                        <li><strong>JSON in SQL:</strong> Using <code>JSONB</code> for semi-structured data.</li>
+                        <li><strong>Sharding:</strong> Horizontal partitioning for Big Data scalability.</li>
+                    </ul>
+                </div>
+                <button class="btn btn-success" onclick="markDone('dbms')">Mark as Strength</button>
+            `,
+
+            uiux: () => `
+                <h1>UI/UX Design for Platforms</h1>
+                <div class="card">
+                    <h2>Gestalt Principles in Data Viz</h2>
+                    <p>How do we group information in complex dashboards?</p>
+                    <ul>
+                        <li><strong>Proximity:</strong> Group related filters together.</li>
+                        <li><strong>Similarity:</strong> Use consistent colors for same data types.</li>
+                        <li><strong>Continuity:</strong> Aligning tables and charts for easier scanning.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>Heuristic Evaluation (Deep-Dive)</h2>
+                    <p>1. <strong>Visibility:</strong> Does the user know data is loading? (Spinners/Skeletons).</p>
+                    <p>2. <strong>Error Prevention:</strong> Are sensitive actions (like "Delete Table") double-confirmed?</p>
+                </div>
+
+                <div class="card">
+                    <h2>Micro-interactions</h2>
+                    <p>Subtle hover effects on data points in a chart provide immediate feedback without cluttering the UI.</p>
+                </div>
+                <button class="btn btn-success" onclick="markDone('uiux')">Mark Ready</button>
+            `,
+
+            oops: () => `
+                <h1>OOPS Logic for Architects</h1>
+                <div class="card">
+                    <h2>Interfaces for DB Handlers</h2>
+                    <p>Abstraction allows us to switch from MySQL to MongoDB without changing the UI code.</p>
+                    <div class="code-block">
+                        <pre>public interface DatabaseConnection {
+    void connect();
+    ResultSet execute(String query);
+}</pre>
+                    </div>
+                </div>
+                <button class="btn btn-success" onclick="markDone('oops')">Mark OOPS Ready</button>
+            `,
+
+            dsa: () => `
+                <h1>DSA & Indexing Structures</h1>
+                <div class="card">
+                    <h2>Tree Balancing (AVL/B-Trees)</h2>
+                    <p>Databases use <strong>B-Trees</strong> because they are optimized for disk reads (wide and shallow), whereas memory-based apps use <strong>AVL Trees</strong>.</p>
+                    <canvas id="dsaCanvas" width="600" height="200" style="width:100%; height:150px; background:#000; border-radius:8px;"></canvas>
+                    <button class="btn btn-outline" style="margin-top:10px" onclick="visualizeAVL()">Simulate AVL Rotation</button>
+                </div>
+                <button class="btn btn-success" onclick="markDone('dsa')">Mark DSA Ready</button>
+            `,
+
+            cn: () => `
+                <h1>Computer Networks & API Mapping</h1>
+                <div class="card">
+                    <h2>API Data Mapping</h2>
+                    <p>A crucial skill for Impetus: Mapping JSON responses to UI components.</p>
+                    <p><strong>Example:</strong> Database uses <code>user_id</code> (snake_case), but UI needs <code>userId</code> (camelCase). This transformation happens in the <strong>Service Layer</strong>.</p>
+                </div>
+                <div class="card">
+                    <h2>JWT Authentication</h2>
+                    <p>Stateless authentication for scaling. Token contains: <strong>Header, Payload, and Signature.</strong></p>
+                </div>
+                <button class="btn btn-success" onclick="markDone('cn')">Mark CN Ready</button>
+            `,
+
+            os: () => `
+                <h1>Operating Systems & Storage</h1>
+                <div class="card">
+                    <h2>Thrashing & Virtual Memory</h2>
+                    <p><strong>Thrashing:</strong> When the OS spends more time swapping pages than executing processes. Solution: Reduce the number of active processes or add more RAM.</p>
+                </div>
+                <div class="card">
+                    <h2>Context Switching</h2>
+                    <p>Saving the state of a process so it can be resumed later. High overhead, so we prefer <strong>Threads</strong> over Processes for UI tasks.</p>
+                </div>
+                <button class="btn btn-success" onclick="markDone('os')">Mark OS Ready</button>
+            `,
+
+            mock: () => `
+                <h1>Mock Interview Engine</h1>
+                <div id="mock-container">
+                    <div id="mock-timer">Ready</div>
+                    <div id="question-area">Press START for an Impetus Technical Question.</div>
+                    <div id="controls">
+                        <button class="btn btn-primary" onclick="startMock()">START SESSION</button>
+                    </div>
+                </div>
+            `,
+            // Fallback for missing pages
+            programming: () => `<h1>Data Programming Round</h1><div class="card"><p>Focus on string manipulation and SQL aggregation.</p></div>`,
+            cloud: () => `<h1>Cloud & Big Data</h1><div class="card"><p>Focus on AWS S3 and Data Lakes.</p></div>`,
+            projects: () => `<h1>Projects Guide</h1><div class="card"><p>Focus on explaining your DB Schema and UI Flows.</p></div>`,
+            hr: () => `<h1>HR Preparation</h1><div class="card"><p>Focus on the STAR method and "Why Impetus?".</p></div>`
+        };
+
+        // --- Logic Implementations ---
+        function initDSAVisualizer() {
+            const canvas = document.getElementById('dsaCanvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#06b6d4';
+            ctx.textAlign = 'center';
+            ctx.fillText("AVL Tree Logic Visualizer", 300, 100);
+        }
+
+        function visualizeAVL() {
+            const canvas = document.getElementById('dsaCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0,0,600,200);
+            ctx.fillStyle = '#10b981';
+            ctx.fillText("Rotating Tree... Rebalancing Complete.", 300, 100);
+        }
+
+        const MOCK_QUESTIONS = [
+            "What is the difference between a primary key and a unique key?",
+            "How do you ensure a design is accessible for users with color blindness?",
+            "What is a deadlock and how does the OS detect it?",
+            "Explain the concept of 'Sharding' in Big Data environments.",
+            "Difference between a clustered and non-clustered index.",
+            "How do you handle 'Cognitive Overload' in a complex data dashboard?",
+            "Explain the 3-way handshake in TCP.",
+            "Why is 'Normalization' important for transactional data?"
+        ];
+
+        function startMock() {
+            let i = 0;
+            const qArea = document.getElementById('question-area');
+            const timer = document.getElementById('mock-timer');
+            
+            const next = () => {
+                if(i < MOCK_QUESTIONS.length) {
+                    const q = MOCK_QUESTIONS[i];
+                    qArea.innerText = q;
+                    if('speechSynthesis' in window) {
+                        speechSynthesis.speak(new SpeechSynthesisUtterance(q));
+                    }
+                    let time = 30;
+                    timer.innerText = time;
+                    const interval = setInterval(() => {
+                        time--;
+                        timer.innerText = time;
+                        if(time <= 0) {
+                            clearInterval(interval);
+                            i++;
+                            next();
+                        }
+                    }, 1000);
+                } else {
+                    qArea.innerText = "Mock Interview Complete!";
+                }
+            };
+            next();
+        }
+
+        // --- Init ---
+        window.onload = () => {
+            navigate('dashboard');
+        };
+
+    </script>
+</body>
+</html>
