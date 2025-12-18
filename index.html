@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek - IMPETUS Prep (DB & UI Specialist)</title>
+    <title>Abhishek - IMPETUS Prep Pro (DB & UI Specialist)</title>
     <style>
         :root {
             --bg-primary: #020617;
@@ -34,7 +34,7 @@
             --success: #059669;
             --danger: #dc2626;
             --warning: #d97706;
-            --code-bg: #f1f5f9;
+            --code-bg: #f8fafc;
         }
 
         * {
@@ -103,30 +103,21 @@
         }
 
         .nav-header {
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             border-bottom: 1px solid var(--border);
             background: linear-gradient(to bottom right, var(--bg-secondary), var(--bg-primary));
         }
 
-        .nav-header h2 {
-            font-size: 1.25rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 800;
-        }
+        .nav-header h2 { font-size: 1.2rem; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; }
 
-        .nav-links {
-            list-style: none;
-            padding: 1rem 0;
-        }
+        .nav-links { list-style: none; padding: 1rem 0; }
 
         .nav-item {
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             cursor: pointer;
             transition: all 0.2s;
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             border-left: 4px solid transparent;
             font-weight: 600;
             display: flex;
@@ -134,28 +125,14 @@
             justify-content: space-between;
         }
 
-        .nav-item:hover {
-            background-color: var(--bg-tertiary);
-            color: var(--text-primary);
-        }
-
-        .nav-item.active {
+        .nav-item:hover, .nav-item.active {
             background-color: var(--bg-tertiary);
             color: var(--accent);
             border-left-color: var(--accent);
         }
 
-        .progress-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border);
-        }
-
-        .progress-dot.completed {
-            background: var(--success);
-            box-shadow: 0 0 8px var(--success);
-        }
+        .progress-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: 0.3s; }
+        .progress-dot.completed { background: var(--success); box-shadow: 0 0 8px var(--success); }
 
         /* --- Main Content --- */
         #main-wrapper {
@@ -170,16 +147,9 @@
             width: 100%;
         }
 
-        #content-container {
-            width: 100%;
-            max-width: 900px;
-            animation: fadeIn 0.4s ease-out;
-        }
+        #content-container { width: 100%; max-width: 900px; animation: fadeIn 0.4s ease-out; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- Components --- */
         .card {
@@ -191,146 +161,105 @@
             box-shadow: var(--card-shadow);
         }
 
-        h1 { font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -0.025em; }
-        h2 { font-size: 1.5rem; margin-bottom: 1.2rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 4px; }
-        h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--text-primary); }
-        
-        p, li { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
-        strong { color: var(--text-primary); }
+        h1 { font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: 800; }
+        h2 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 5px; width: fit-content; margin-top: 1.5rem;}
+        h3 { font-size: 1.1rem; margin-bottom: 0.5rem; margin-top: 1rem; color: var(--text-primary); }
+        p, li { font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.8rem; }
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
 
         .btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.7rem 1.2rem;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
             font-weight: 700;
-            transition: all 0.2s;
+            font-size: 0.85rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            width: fit-content;
+            gap: 8px;
+            transition: 0.2s;
         }
-
-        .btn-primary { background-color: var(--accent); color: var(--bg-primary); }
+        .btn-primary { background: var(--accent); color: var(--bg-primary); }
+        .btn-success { background: var(--success); color: white; }
         .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
 
-        /* --- Code & Data --- */
-        .code-block {
-            background: var(--code-bg);
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin: 1.2rem 0;
-            border: 1px solid var(--border);
-            position: relative;
-            overflow-x: auto;
-        }
-
-        pre { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #e2e8f0; line-height: 1.5; }
-
-        .table-wrapper { 
-            overflow-x: auto; 
-            margin: 1.5rem 0; 
-            border-radius: 8px; 
-            border: 1px solid var(--border); 
-            -webkit-overflow-scrolling: touch;
-        }
-        table { width: 100%; border-collapse: collapse; background: var(--bg-secondary); min-width: 500px; }
-        th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-        th { background: var(--bg-tertiary); color: var(--accent); }
-
-        /* --- Specific UI Widgets --- */
-        .grid-dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-val { font-size: 2.5rem; font-weight: 900; color: var(--accent); }
-
-        .search-box {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        /* --- Responsive Logic --- */
-        @media (max-width: 768px) {
-            #mobile-header { display: flex; }
-            #sidebar { transform: translateX(-100%); width: 280px; }
-            #sidebar.active { transform: translateX(0); }
-            #sidebar-overlay.active { display: block; }
-            #main-wrapper { margin-left: 0; padding: 5rem 1rem 2rem 1rem; }
-            .grid-dashboard { grid-template-columns: 1fr; }
-            h1 { font-size: 1.8rem; }
-            .card { padding: 1.5rem; }
-            .btn { width: 100%; }
-        }
-
-        /* --- Mock Mode --- */
-        #mock-container {
-            border: 2px solid var(--accent);
-            padding: 1.5rem;
-            text-align: center;
-            border-radius: 12px;
-            background: rgba(6, 182, 212, 0.05);
-        }
-
-        #question-area {
-            font-size: 1.2rem;
-            font-weight: 600;
-            min-height: 100px;
-            margin: 1.5rem 0;
-            line-height: 1.4;
-        }
-
+        /* --- Quiz UI --- */
         .quiz-option {
             padding: 12px;
             margin: 8px 0;
             border: 1px solid var(--border);
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.9rem;
+            transition: 0.2s;
+            background: var(--bg-tertiary);
         }
-        .quiz-option.correct { background: var(--success); color: white; }
-        .quiz-option.wrong { background: var(--danger); color: white; }
+        .quiz-option:hover { border-color: var(--accent); }
+        .quiz-option.correct { background: var(--success) !important; color: white; border-color: var(--success); }
+        .quiz-option.wrong { background: var(--danger) !important; color: white; border-color: var(--danger); }
 
+        /* --- Table & Code --- */
+        .table-wrapper { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        th, td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; }
+        th { background: var(--bg-tertiary); color: var(--accent); }
+
+        .code-block { background: var(--code-bg); padding: 1rem; border-radius: 8px; margin: 1rem 0; overflow-x: auto; position: relative; border: 1px solid var(--border); }
+        pre { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #e2e8f0; white-space: pre-wrap; }
+
+        /* --- Mobile Adjustments (Galaxy S21 FE) --- */
+        @media (max-width: 768px) {
+            #mobile-header { display: flex; }
+            #sidebar { transform: translateX(-100%); width: 280px; }
+            #sidebar.active { transform: translateX(0); }
+            #sidebar-overlay.active { display: block; }
+            #main-wrapper { margin-left: 0; padding: 5rem 1rem 2rem 1rem; }
+            h1 { font-size: 1.8rem; }
+            .card { padding: 1.2rem; }
+            .btn { width: 100%; }
+        }
+
+        /* --- Mock Mode --- */
+        #mock-container { border: 2px solid var(--accent); padding: 2rem; border-radius: 12px; text-align: center; }
+        #mock-timer { font-size: 2rem; font-weight: 800; color: var(--warning); }
+        #question-area { min-height: 80px; margin: 1.5rem 0; font-size: 1.2rem; font-weight: 600; }
+        #answer-input { width: 100%; height: 100px; background: var(--bg-primary); border: 1px solid var(--border); color: white; padding: 10px; border-radius: 8px; }
+
+        /* --- Search & Tools --- */
+        .search-box { width: 100%; padding: 0.8rem; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 8px; color: white; margin-bottom: 1rem; }
+        .theme-toggle-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1002; width: 50px; height: 50px; border-radius: 50%; background: var(--accent); color: var(--bg-primary); border: none; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .grid-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat-val { font-size: 2.5rem; font-weight: 900; color: var(--accent); }
     </style>
 </head>
 <body data-theme="dark">
 
     <div id="sidebar-overlay" onclick="toggleMenu()"></div>
+    <button class="theme-toggle-btn" onclick="toggleTheme()">🌓</button>
 
     <header id="mobile-header">
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-        <span style="font-weight: 800; font-size: 0.9rem; color: var(--accent)">IMPETUS PREP</span>
-        <button class="btn btn-outline" style="padding: 5px 10px; font-size: 0.7rem;" onclick="toggleTheme()">🌓</button>
+        <span style="font-weight: 800; font-size: 1rem; color: var(--accent)">IMPETUS PREP PRO</span>
+        <div style="width: 24px;"></div>
     </header>
 
     <nav id="sidebar">
         <div class="nav-header">
             <h2>IMPETUS Prep</h2>
-            <p>Abhishek Paliwal (MIT)</p>
+            <p>Abhishek Paliwal</p>
             <p><small>DB & UI/UX Specialist</small></p>
         </div>
         <ul class="nav-links">
-            <li class="nav-item active" onclick="navigate('dashboard')">Dashboard <div class="progress-dot" id="dot-dashboard"></div></li>
-            <li class="nav-item" onclick="navigate('dbms')">DBMS Core <div class="progress-dot" id="dot-dbms"></div></li>
+            <li class="nav-item active" onclick="navigate('dashboard')">Overview <div class="progress-dot" id="dot-dashboard"></div></li>
+            <li class="nav-item" onclick="navigate('dbms')">DBMS Master <div class="progress-dot" id="dot-dbms"></div></li>
             <li class="nav-item" onclick="navigate('uiux')">UI/UX Design <div class="progress-dot" id="dot-uiux"></div></li>
             <li class="nav-item" onclick="navigate('oops')">OOPS Mastery <div class="progress-dot" id="dot-oops"></div></li>
-            <li class="nav-item" onclick="navigate('dsa')">DSA Masterclass <div class="progress-dot" id="dot-dsa"></div></li>
-            <li class="nav-item" onclick="navigate('programming')">Data Coding <div class="progress-dot" id="dot-programming"></div></li>
+            <li class="nav-item" onclick="navigate('dsa')">DSA & Data <div class="progress-dot" id="dot-dsa"></div></li>
+            <li class="nav-item" onclick="navigate('programming')">Coding Round <div class="progress-dot" id="dot-programming"></div></li>
             <li class="nav-item" onclick="navigate('os')">OS & Storage <div class="progress-dot" id="dot-os"></div></li>
             <li class="nav-item" onclick="navigate('cn')">Networks & API <div class="progress-dot" id="dot-cn"></div></li>
             <li class="nav-item" onclick="navigate('cloud')">Cloud & S3 <div class="progress-dot" id="dot-cloud"></div></li>
-            <li class="nav-item" onclick="navigate('projects')">Projects Guide <div class="progress-dot" id="dot-projects"></div></li>
+            <li class="nav-item" onclick="navigate('projects')">Project Guide <div class="progress-dot" id="dot-projects"></div></li>
             <li class="nav-item" onclick="navigate('hr')">HR Strategy <div class="progress-dot" id="dot-hr"></div></li>
             <li class="nav-item" onclick="navigate('mock')">Mock Engine</li>
         </ul>
@@ -338,18 +267,20 @@
 
     <main id="main-wrapper">
         <div id="content-container">
-            <!-- Dynamic Content -->
+            <!-- Content Loaded Dynamically -->
         </div>
     </main>
 
     <script>
-        // --- Core Logic ---
+        // --- Core State ---
         const TARGET_DATE = new Date("2025-12-19T09:00:00");
         const STATE = {
-            progress: JSON.parse(localStorage.getItem('abhishek_prep_v2')) || {},
-            theme: 'dark'
+            progress: JSON.parse(localStorage.getItem('abhishek_prep')) || {},
+            theme: 'dark',
+            quizState: {}
         };
 
+        // --- Core Navigation ---
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('sidebar-overlay').classList.toggle('active');
@@ -363,13 +294,14 @@
         function navigate(id) {
             const items = document.querySelectorAll('.nav-item');
             items.forEach(i => i.classList.remove('active'));
+            
             const activeLink = Array.from(items).find(i => i.innerText.toLowerCase().includes(id.substring(0,3)));
             if(activeLink) activeLink.classList.add('active');
 
             const container = document.getElementById('content-container');
             container.innerHTML = PAGES[id] ? PAGES[id]() : PAGES['dashboard']();
             
-            if(window.innerWidth <= 768) toggleMenu();
+            if(window.innerWidth <= 768 && document.getElementById('sidebar').classList.contains('active')) toggleMenu();
             window.scrollTo(0,0);
             updateProgressDots();
             if(id === 'dsa') initDSAVisualizer();
@@ -377,7 +309,7 @@
 
         function markDone(topic) {
             STATE.progress[topic] = true;
-            localStorage.setItem('abhishek_prep_v2', JSON.stringify(STATE.progress));
+            localStorage.setItem('abhishek_prep', JSON.stringify(STATE.progress));
             updateProgressDots();
             navigate(topic);
         }
@@ -389,172 +321,1045 @@
             });
         }
 
-        // --- Pages Content ---
+        // --- UI Tools ---
+        function renderQuiz(topic, questions) {
+            STATE.quizState[topic] = questions;
+            let html = '<div class="card"><h2>Knowledge Check: ' + topic.toUpperCase() + '</h2>';
+            questions.forEach((q, qIdx) => {
+                html += '<div id="quiz-' + topic + '-' + qIdx + '"><p><strong>Question ' + (qIdx + 1) + ':</strong> ' + q.q + '</p>';
+                q.options.forEach((opt, i) => {
+                    html += '<div class="quiz-option" onclick="handleQuiz(\'' + topic + '\', ' + qIdx + ', ' + i + ', this)">' + opt + '</div>';
+                });
+                html += '<div id="quiz-feedback-' + topic + '-' + qIdx + '" style="margin-top: 10px;"></div></div>';
+            });
+            html += '</div>';
+            return html;
+        }
+
+        function handleQuiz(topic, qIdx, choice, el) {
+            const correct = STATE.quizState[topic][qIdx].a;
+            const feedback = document.getElementById(`quiz-feedback-${topic}-${qIdx}`);
+            const options = el.parentElement.querySelectorAll('.quiz-option');
+            
+            options.forEach(opt => opt.onclick = null);
+
+            if(choice === correct) {
+                el.classList.add('correct');
+                feedback.innerHTML = `<p style="color:var(--success)">Correct! ${STATE.quizState[topic][qIdx].exp}</p>`;
+            } else {
+                el.classList.add('wrong');
+                options[correct].classList.add('correct');
+                feedback.innerHTML = `<p style="color:var(--danger)">Incorrect. ${STATE.quizState[topic][qIdx].exp}</p>`;
+            }
+        }
+
+        function handleSearch(val) {
+            const results = document.getElementById('search-results');
+            if(!val) { results.innerHTML = ""; return; }
+            const keywords = ['sql', 'java', 'python', 'oops', 'dsa', 'bcnf', 'avl', 'joins', 'api', 'cloud', 'deadlock', 'tcp', 'udp', 'ec2', 's3', 'gestalt', 'nielsen', 'wcag', 'two sum', 'group anagrams', 'bfs', 'dfs'];
+            const matches = keywords.filter(k => k.includes(val.toLowerCase()));
+            results.innerHTML = matches.map(m => `<button class="btn btn-outline" style="margin:5px" onclick="navigate('dbms')">${m.toUpperCase()}</button>`).join('');
+        }
+
+        // --- Pages ---
         const PAGES = {
             dashboard: () => {
                 const now = new Date();
                 const diff = TARGET_DATE - now;
                 const d = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
                 const h = Math.max(0, Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-                const completed = Object.values(STATE.progress).filter(Boolean).length;
-
+                const count = Object.values(STATE.progress).filter(Boolean).length;
+                
                 return `
-                    <h1>Interview Dashboard</h1>
+                    <h1>Preparation Command Center</h1>
                     <div class="grid-dashboard">
                         <div class="card">
-                            <h3>Days to Impetus</h3>
+                            <h3>Interview Countdown</h3>
                             <div class="stat-val">${d}d ${h}h</div>
-                            <p>December 19, 2025</p>
+                            <p>Target Date: Dec 19, 2025</p>
                         </div>
                         <div class="card">
-                            <h3>Topics Mastered</h3>
-                            <div class="stat-val">${completed}/11</div>
-                            <p>${Math.round((completed/11)*100)}% Readiness</p>
+                            <h3>Readiness Progress</h3>
+                            <div class="stat-val">${count}/11</div>
+                            <p>${Math.round((count/11)*100)}% Content Mastered</p>
                         </div>
                     </div>
                     <div class="card">
-                        <h2>The Specialist Strategy</h2>
-                        <p>Impetus Technologies values <strong>Data Platform Product Engineers</strong>. As a candidate strong in DBMS and UI/UX, focus your narrative on "The Bridge"—how you make complex backend data digestible for end-users.</p>
-                        <button class="btn btn-primary" onclick="navigate('dbms')">Explore DBMS Strength</button>
+                        <h2>Quick Search</h2>
+                        <input type="text" class="search-box" placeholder="Search (e.g. 'Joins', 'AVL')..." onkeyup="handleSearch(this.value)">
+                        <div id="search-results"></div>
+                    </div>
+                    <div class="card">
+                        <h2>Personalized Pitch Strategy</h2>
+                        <p>As a <strong>DB & UI/UX Specialist</strong>, your value proposition for IMPETUS is your ability to bridge the gap between high-volume backend data and intuitive user interaction. Focus on explaining how efficient schema design directly impacts frontend performance.</p>
+                        <button class="btn btn-primary" onclick="navigate('dbms')">Master DBMS Fundamentals</button>
+                    </div>
+                    <div class="card">
+                        <h2>Impetus Technologies Overview</h2>
+                        <p>Impetus Technologies powers Data and GenAI at scale, delivering services for the Intelligent Enterprise. Key strengths include expertise in Data Engineering, Cloud Transformation, and Generative AI. They serve domains like BFSI, Healthcare, Retail with solutions like Modern Data Platform, LeapLogic for migration, and Prism for observability. Technologies emphasized: AWS (EC2, S3, Lambda), Databricks, Snowflake. Trusted by clients like McKesson, American Express, Capital One.</p>
+                        <p>For freshers, focus on their innovation labs and agentic AI accelerators. Interview process often includes online assessments (MCQs on Java/DBMS/SQL + coding), 2-3 technical rounds (API mapping, SQL queries like highest used words, permutations), and HR.</p>
                     </div>
                 `;
             },
 
             dbms: () => `
-                <h1>DBMS & Data Engineering</h1>
+                <h1>DBMS & Database Engineering</h1>
                 <div class="card">
-                    <h2>Advanced Normalization (BCNF)</h2>
-                    <p>Impetus often tests the edge cases of 3NF vs BCNF. Remember: A table is in <strong>BCNF</strong> if for every functional dependency X → Y, X is a super key.</p>
+                    <h2>1. Fundamental Architecture</h2>
+                    <p>A Database Management System (DBMS) is software that manages data. Key characteristics include:</p>
+                    <ul>
+                        <li><strong>Data Independence:</strong> Changes in the physical storage don't affect logic.</li>
+                        <li><strong>Concurrency:</strong> Multiple users can access data simultaneously.</li>
+                        <li><strong>Transaction Management:</strong> Ensuring ACID properties.</li>
+                    </ul>
+
+                    <h2>2. ACID Properties (The Golden Rule)</h2>
+                    <p>Essential for interviews. Explain these with a banking transaction example:</p>
+                    <ul>
+                        <li><strong>Atomicity:</strong> "All or nothing." If one part of a transaction fails, the whole thing is rolled back.</li>
+                        <li><strong>Consistency:</strong> Data moves from one valid state to another.</li>
+                        <li><strong>Isolation:</strong> Transactions occur independently without interference.</li>
+                        <li><strong>Durability:</strong> Once committed, data remains even after a system crash.</li>
+                    </ul>
+
+                    <h2>3. Normalization (Data Integrity)</h2>
+                    <p>Normalization is the process of structuring a database to reduce redundancy and improve data integrity.</p>
+                    <ul>
+                        <li><strong>1NF:</strong> No repeating groups; atomic values. Example: Split a column with multiple phone numbers into separate rows.</li>
+                        <li><strong>2NF:</strong> 1NF + No partial dependencies (every non-key attribute depends on the <em>whole</em> primary key). Example: In a table with StudentID and CourseID as composite key, remove attributes that depend only on StudentID.</li>
+                        <li><strong>3NF:</strong> 2NF + No transitive dependencies (non-key attributes depend only on the primary key). Example: If Department depends on EmployeeID and Location depends on Department, split into separate tables.</li>
+                        <li><strong>BCNF:</strong> Stricter version of 3NF. For every A → B, A must be a super key. Example: In a table where Professor teaches Course and Course has Department, if Professor determines Department, make Professor the key.</li>
+                        <li><strong>4NF:</strong> BCNF + No multi-valued dependencies. Example: Split tables with independent multi-valued facts like Employee Skills and Languages.</li>
+                        <li><strong>5NF:</strong> 4NF + No join dependencies. Rarely used, for complex relational decompositions.</li>
+                    </ul>
+                    <p>Denormalization: Opposite, adds redundancy for performance in read-heavy systems like data warehouses.</p>
+
+                    <h2>4. SQL Joins & Query Execution</h2>
                     <div class="table-wrapper">
                         <table>
-                            <tr><th>Problem</th><th>Solution</th><th>Why?</th></tr>
-                            <tr><td>Redundancy</td><td>Normalization</td><td>Saves storage, ensures integrity.</td></tr>
-                            <tr><td>Slow Queries</td><td>Indexing</td><td>B+ Tree lookups in O(log n).</td></tr>
-                            <tr><td>Lost Updates</td><td>Transactions (ACID)</td><td>Ensures atomic operations.</td></tr>
+                            <tr><th>Join Type</th><th>Logical Operation</th><th>Use Case</th><th>Example Query</th></tr>
+                            <tr><td>Inner Join</td><td>Intersection</td><td>Get matching records from both tables.</td><td>SELECT * FROM Employees INNER JOIN Departments ON Employees.DeptID = Departments.ID;</td></tr>
+                            <tr><td>Left Join</td><td>A ∪ (A ∩ B)</td><td>Get all records from left, even if no match on right.</td><td>SELECT * FROM Employees LEFT JOIN Salaries ON Employees.ID = Salaries.EmpID;</td></tr>
+                            <tr><td>Right Join</td><td>B ∪ (A ∩ B)</td><td>Get all records from right, even if no match on left.</td><td>SELECT * FROM Departments RIGHT JOIN Employees ON Departments.ID = Employees.DeptID;</td></tr>
+                            <tr><td>Full Join</td><td>A ∪ B</td><td>Get all records from both tables.</td><td>SELECT * FROM Employees FULL OUTER JOIN Departments ON Employees.DeptID = Departments.ID;</td></tr>
+                            <tr><td>Self Join</td><td>Join table with itself</td><td>Compare rows in the same table.</td><td>SELECT A.Name, B.Name FROM Employees A INNER JOIN Employees B ON A.ManagerID = B.ID;</td></tr>
+                            <tr><td>Cross Join</td><td>Cartesian product</td><td>All possible combinations.</td><td>SELECT * FROM Colors CROSS JOIN Sizes;</td></tr>
                         </table>
                     </div>
-                </div>
+                    <p>Differences in Joins: Inner returns only matches, Outer includes non-matches with NULLs. Left/Right specify which side to include all from.</p>
+                    
+                    <h3>The Execution Plan</h3>
+                    <p>Impetus may ask how you optimize a slow query. Use <code>EXPLAIN</code> to see the execution plan. Look for <em>Full Table Scans</em> (bad for large data) vs <em>Index Scans</em> (good).</p>
+                    <p>Subqueries: Nested queries, e.g., SELECT Name FROM Employees WHERE Salary > (SELECT AVG(Salary) FROM Employees);</p>
 
-                <div class="card">
-                    <h2>Query Optimization & Execution Plans</h2>
-                    <p>When a query is slow, we use <code>EXPLAIN ANALYZE</code>. Look for <strong>Full Table Scans</strong> vs <strong>Index Scans</strong>.</p>
-                    <p><strong>Query Tuning:</strong> Avoid <code>SELECT *</code>. Use specific columns to reduce I/O overhead.</p>
-                </div>
-
-                <div class="card">
-                    <h2>Modern DB Topics</h2>
+                    <h2>5. DDL, DML, DCL, TCL Commands</h2>
                     <ul>
-                        <li><strong>NoSQL:</strong> BASE consistency vs ACID.</li>
-                        <li><strong>JSON in SQL:</strong> Using <code>JSONB</code> for semi-structured data.</li>
-                        <li><strong>Sharding:</strong> Horizontal partitioning for Big Data scalability.</li>
+                        <li><strong>DDL (Data Definition Language):</strong> CREATE, ALTER, DROP, TRUNCATE. Used to define/modify database structure. Example: CREATE TABLE Students (ID INT PRIMARY KEY, Name VARCHAR(50));</li>
+                        <li><strong>DML (Data Manipulation Language):</strong> INSERT, UPDATE, DELETE. Manipulates data. Example: INSERT INTO Students VALUES(1, 'Abhishek');</li>
+                        <li><strong>DCL (Data Control Language):</strong> GRANT, REVOKE. Controls access. Example: GRANT SELECT ON Students TO User;</li>
+                        <li><strong>TCL (Transaction Control Language):</strong> COMMIT, ROLLBACK, SAVEPOINT. Manages transactions.</li>
                     </ul>
+
+                    <h2>6. Differences: TRUNCATE vs DELETE vs DROP</h2>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><th>Command</th><th>Type</th><th>Rollback?</th><th>Affects</th><th>Speed</th><th>Where Clause?</th></tr>
+                            <tr><td>DELETE</td><td>DML</td><td>Yes</td><td>Data only</td><td>Slow (logs each row)</td><td>Yes</td></tr>
+                            <tr><td>TRUNCATE</td><td>DDL</td><td>No</td><td>Data only (resets auto-increment)</td><td>Fast (no logs)</td><td>No</td></tr>
+                            <tr><td>DROP</td><td>DDL</td><td>No</td><td>Entire table/structure</td><td>Fast</td><td>No</td></tr>
+                        </table>
+                    </div>
+                    <p>Example: DELETE FROM Table WHERE ID=1; (removes specific rows, can rollback). TRUNCATE TABLE Table; (removes all data, faster, no rollback). DROP TABLE Table; (deletes table entirely).</p>
+
+                    <h2>7. Data Types Differences/Comparisons</h2>
+                    <ul>
+                        <li><strong>CHAR vs VARCHAR:</strong> CHAR is fixed-length (pads with spaces), VARCHAR is variable (no padding, saves space). Use CHAR for fixed data like codes, VARCHAR for names.</li>
+                        <li><strong>INT vs BIGINT:</strong> INT (4 bytes, -2^31 to 2^31-1), BIGINT (8 bytes, larger range). Use BIGINT for large IDs.</li>
+                        <li><strong>FLOAT vs DECIMAL:</strong> FLOAT approximate (floating-point), DECIMAL exact (fixed-point). Use DECIMAL for money.</li>
+                        <li><strong>DATE vs DATETIME:</strong> DATE (year-month-day), DATETIME (with time). Use DATETIME for timestamps.</li>
+                    </ul>
+
+                    <h2>8. Advanced Topics for Impetus</h2>
+                    <p>Impetus focuses on data platforms: Know NoSQL vs SQL (BASE vs ACID), Sharding (horizontal partitioning for scalability), JSON in SQL (JSONB for semi-structured data).</p>
+                    <p>Query for highest used words: SELECT word, COUNT(*) FROM (SELECT unnest(string_to_array(text, ' ')) as word FROM table) GROUP BY word ORDER BY COUNT DESC LIMIT 3;</p>
+                    <p>Permutations/Combinations without stored procedures: Use recursive CTE or generate_series in SQL.</p>
                 </div>
-                <button class="btn btn-success" onclick="markDone('dbms')">Mark as Strength</button>
+                
+                ${renderQuiz('dbms', [{
+                    q: "In 3NF, what kind of dependency is prohibited?", 
+                    options:["Partial Dependency", "Transitive Dependency", "Atomic Dependency"], 
+                    a:1, 
+                    exp:"3NF removes transitive dependencies (where a non-prime attribute depends on another non-prime attribute)."
+                }, {
+                    q: "Which command allows rollback?", 
+                    options:["TRUNCATE", "DELETE", "DROP"], 
+                    a:1, 
+                    exp:"DELETE is DML and supports rollback; TRUNCATE and DROP are DDL and auto-commit."
+                }, {
+                    q: "Difference between CHAR and VARCHAR?", 
+                    options:["CHAR variable, VARCHAR fixed", "CHAR fixed, VARCHAR variable", "No difference"], 
+                    a:1, 
+                    exp:"CHAR is fixed-length with padding, VARCHAR variable without padding."
+                }, {
+                    q: "What is BCNF stricter than?", 
+                    options:["1NF", "2NF", "3NF"], 
+                    a:2, 
+                    exp:"BCNF is a stronger form of 3NF where every determinant is a superkey."
+                }])}
+                <button class="btn btn-success" onclick="markDone('dbms')">Complete DBMS Module</button>
             `,
 
             uiux: () => `
-                <h1>UI/UX Design for Platforms</h1>
+                <h1>UI/UX Design Engineering</h1>
                 <div class="card">
-                    <h2>Gestalt Principles in Data Viz</h2>
-                    <p>How do we group information in complex dashboards?</p>
+                    <h2>1. Design Thinking Process</h2>
+                    <p>UX is not just "making it look pretty." It's a problem-solving methodology:</p>
+                    <ol>
+                        <li><strong>Empathize:</strong> Understand user needs via research (interviews, surveys).</li>
+                        <li><strong>Define:</strong> Identify the core problem (create user personas, journey maps).</li>
+                        <li><strong>Ideate:</strong> Brainstorm solutions and wireframe (sketch ideas, prioritize features).</li>
+                        <li><strong>Prototype:</strong> Create interactive mockups (using Figma, Adobe XD).</li>
+                        <li><strong>Test:</strong> Validate with real users (usability testing, A/B testing).</li>
+                    </ol>
+
+                    <h2>2. Nielsen's 10 Usability Heuristics</h2>
+                    <p>These are universal "rules of thumb" for interaction design. Examples from interviews:</p>
                     <ul>
-                        <li><strong>Proximity:</strong> Group related filters together.</li>
-                        <li><strong>Similarity:</strong> Use consistent colors for same data types.</li>
-                        <li><strong>Continuity:</strong> Aligning tables and charts for easier scanning.</li>
+                        <li><strong>Visibility of System Status:</strong> Use loading spinners or progress bars. Example: In a data dashboard, show 'Loading...' during API calls.</li>
+                        <li><strong>Match between System and Real World:</strong> Use language and concepts familiar to users. Example: Use 'Trash' icon for delete instead of abstract symbols.</li>
+                        <li><strong>User Control and Freedom:</strong> Always provide an "Undo" or "Cancel" option. Example: Gmail's 'Undo Send' feature.</li>
+                        <li><strong>Consistency and Standards:</strong> Follow platform conventions. Example: Use iOS navigation patterns on Apple apps.</li>
+                        <li><strong>Error Prevention:</strong> Eliminate error-prone conditions. Example: Confirm before deleting data.</li>
+                        <li><strong>Recognition Rather than Recall:</strong> Minimize memory load. Example: Show recent searches instead of making users remember.</li>
+                        <li><strong>Flexibility and Efficiency:</strong> Shortcuts for experts. Example: Keyboard shortcuts in editors.</li>
+                        <li><strong>Aesthetic and Minimalist Design:</strong> Avoid clutter. Example: Google's simple homepage.</li>
+                        <li><strong>Help Users Recognize Errors:</strong> Clear error messages. Example: 'Invalid email format' instead of 'Error'.</li>
+                        <li><strong>Help and Documentation:</strong> Easy-to-search help. Example: Tooltips on icons.</li>
                     </ul>
-                </div>
 
-                <div class="card">
-                    <h2>Heuristic Evaluation (Deep-Dive)</h2>
-                    <p>1. <strong>Visibility:</strong> Does the user know data is loading? (Spinners/Skeletons).</p>
-                    <p>2. <strong>Error Prevention:</strong> Are sensitive actions (like "Delete Table") double-confirmed?</p>
-                </div>
+                    <h2>3. Visual Design & Gestalt Principles</h2>
+                    <p>How users perceive visual elements as grouped or organized. Key principles with examples:</p>
+                    <ul>
+                        <li><strong>Proximity:</strong> Elements close together are seen as a group. Example: Group related form fields in a signup page.</li>
+                        <li><strong>Similarity:</strong> Elements with similar color/shape are seen as related. Example: Use same button style for all CTAs.</li>
+                        <li><strong>Continuity:</strong> Eyes follow paths, lines, and curves. Example: Align elements in a flow for reading ease.</li>
+                        <li><strong>Closure:</strong> Mind fills gaps to create whole. Example: Dotted borders perceived as solid.</li>
+                        <li><strong>Figure-Ground:</strong> Distinguish foreground from background. Example: High contrast for buttons.</li>
+                        <li><strong>Common Fate:</strong> Elements moving together are grouped. Example: Animations in carousels.</li>
+                        <li><strong>Symmetry:</strong> Balanced designs feel stable. Example: Centered layouts.</li>
+                        <li><strong>Prägnanz:</strong> Simple interpretations preferred. Example: Minimalist icons.</li>
+                        <li><strong>Enclosure:</strong> Borders group elements. Example: Cards in dashboards.</li>
+                    </ul>
 
-                <div class="card">
-                    <h2>Micro-interactions</h2>
-                    <p>Subtle hover effects on data points in a chart provide immediate feedback without cluttering the UI.</p>
+                    <h2>4. Accessibility (WCAG)</h2>
+                    <p>Impetus works on enterprise tools. Accessibility is mandatory. WCAG (Web Content Accessibility Guidelines) levels: A, AA, AAA. Key principles:</p>
+                    <ul>
+                        <li><strong>Perceivable:</strong> Provide text alternatives for non-text (alt tags for images). Example: <img alt="Dashboard chart">.</li>
+                        <li><strong>Operable:</strong> Keyboard navigable, no time limits. Example: Focus states on buttons.</li>
+                        <li><strong>Understandable:</strong> Readable text, predictable navigation. Example: Consistent layouts.</li>
+                        <li><strong>Robust:</strong> Compatible with assistive tech. Example: ARIA labels like aria-label="Search button".</li>
+                    </ul>
+                    <p>Examples: Color contrast 4.5:1, semantic HTML (<header>, <nav>), screen reader testing.</p>
+
+                    <h2>5. Cognitive Overload Prevention</h2>
+                    <p>Avoid overwhelming users: Chunk information, use progressive disclosure (expand/collapse sections), prioritize content with hierarchy.</p>
                 </div>
-                <button class="btn btn-success" onclick="markDone('uiux')">Mark Ready</button>
+                
+                ${renderQuiz('uiux', [{
+                    q: "Which Gestalt principle groups close elements?", 
+                    options:["Similarity", "Proximity", "Closure"], 
+                    a:1, 
+                    exp:"Proximity: Items near each other are perceived as related."
+                }, {
+                    q: "Nielsen's heuristic for error messages?", 
+                    options:["Visibility of Status", "Help Recognize Errors", "User Control"], 
+                    a:1, 
+                    exp:"Help users recognize, diagnose, and recover from errors."
+                }, {
+                    q: "WCAG principle for alt text?", 
+                    options:["Operable", "Perceivable", "Robust"], 
+                    a:1, 
+                    exp:"Perceivable: Information must be presentable to users in ways they can perceive."
+                }])}
+                <button class="btn btn-success" onclick="markDone('uiux')">Complete UI/UX Module</button>
             `,
 
             oops: () => `
-                <h1>OOPS Logic for Architects</h1>
+                <h1>Object-Oriented Programming (OOPS)</h1>
                 <div class="card">
-                    <h2>Interfaces for DB Handlers</h2>
-                    <p>Abstraction allows us to switch from MySQL to MongoDB without changing the UI code.</p>
-                    <div class="code-block">
-                        <pre>public interface DatabaseConnection {
-    void connect();
-    ResultSet execute(String query);
-}</pre>
-                    </div>
+                    <h2>1. The Four Pillars</h2>
+                    <p>OOPS aims to implement real-world entities in programming. The main principles are encapsulation, inheritance, polymorphism, and abstraction.</p>
+                    
+                    <h3>Encapsulation</h3>
+                    <p>Binding data and methods into a single unit (Class). We use <em>Private</em> modifiers and <em>Getters/Setters</em> to protect data. Benefits: Data hiding, increased flexibility.</p>
+                    <div class="code-block"><pre>// Java Example
+class BankAccount {
+    private double balance;
+    public void deposit(double amount) { balance += amount; }
+    public double getBalance() { return balance; }
+}</pre></div>
+                    <div class="code-block"><pre># Python Example
+class BankAccount:
+    def __init__(self):
+        self.__balance = 0  # Private
+    def deposit(self, amount):
+        self.__balance += amount
+    def get_balance(self):
+        return self.__balance</pre></div>
+
+                    <h3>Abstraction</h3>
+                    <p>Hiding implementation details and showing only functionality. Example: You know how to drive a car (Interface) without knowing how the engine works (Implementation). Use abstract classes/interfaces.</p>
+                    <div class="code-block"><pre>// Java
+abstract class Shape {
+    abstract void draw();
+}
+class Circle extends Shape {
+    void draw() { System.out.println("Drawing Circle"); }
+}</pre></div>
+                    <div class="code-block"><pre># Python
+from abc import ABC, abstractmethod
+class Shape(ABC):
+    @abstractmethod
+    def draw(self): pass
+class Circle(Shape):
+    def draw(self): print("Drawing Circle")</pre></div>
+
+                    <h3>Inheritance</h3>
+                    <p>Mechanism where one class acquires properties of another. Promotes <em>Code Reusability</em>. Types: Single, Multiple (Java uses interfaces), Multilevel, Hierarchical.</p>
+                    <div class="code-block"><pre>// Java Single Inheritance
+class Animal {
+    void eat() { System.out.println("Eating"); }
+}
+class Dog extends Animal {
+    void bark() { System.out.println("Barking"); }
+}</pre></div>
+                    <div class="code-block"><pre># Python Multiple Inheritance
+class Flyer:
+    def fly(self): print("Flying")
+class Swimmer:
+    def swim(self): print("Swimming")
+class Duck(Flyer, Swimmer):
+    pass</pre></div>
+
+                    <h3>Polymorphism</h3>
+                    <p>"One name, many forms." Allows objects of different classes to be treated as one type.</p>
+                    <ul>
+                        <li><strong>Compile-time (Overloading):</strong> Same method name, different parameters. Example: add(int, int) and add(float, float).</li>
+                        <li><strong>Runtime (Overriding):</strong> Same method name and parameters in parent and child classes.</li>
+                    </ul>
+                    <div class="code-block"><pre>// Java Overriding
+class Animal {
+    void sound() { System.out.println("Animal Sound"); }
+}
+class Dog extends Animal {
+    void sound() { System.out.println("Bark"); }
+}</pre></div>
+                    <div class="code-block"><pre># Python Overriding
+class Animal:
+    def sound(self): print("Animal Sound")
+class Dog(Animal):
+    def sound(self): print("Bark")</pre></div>
+
+                    <h2>2. SOLID Principles</h2>
+                    <p>Advanced design principles for clean, maintainable code:</p>
+                    <ul>
+                        <li><strong>S: Single Responsibility</strong> - A class should have one job. Example: Separate UserService from EmailService.</li>
+                        <li><strong>O: Open/Closed</strong> - Open for extension, closed for modification. Example: Use interfaces for new behaviors.</li>
+                        <li><strong>L: Liskov Substitution</strong> - Subclasses should be substitutable for base classes without altering correctness. Example: Bird class with fly(), but Ostrich subclass shouldn't break it.</li>
+                        <li><strong>I: Interface Segregation</strong> - Many client-specific interfaces better than one general. Example: Separate Printer and Scanner interfaces.</li>
+                        <li><strong>D: Dependency Inversion</strong> - Depend on abstractions, not concretes. Example: Use interfaces in constructors.</li>
+                    </ul>
                 </div>
-                <button class="btn btn-success" onclick="markDone('oops')">Mark OOPS Ready</button>
+                
+                ${renderQuiz('oops', [{
+                    q: "Which principle hides implementation details?", 
+                    options:["Encapsulation", "Abstraction", "Inheritance"], 
+                    a:1, 
+                    exp:"Abstraction shows functionality, hides details."
+                }, {
+                    q: "SOLID's 'S' stands for?", 
+                    options:["Single Responsibility", "Open/Closed", "Liskov Substitution"], 
+                    a:0, 
+                    exp:"A class should have only one reason to change."
+                }])}
+                <button class="btn btn-success" onclick="markDone('oops')">Complete OOPS Module</button>
             `,
 
             dsa: () => `
-                <h1>DSA & Indexing Structures</h1>
+                <h1>Data Structures & Algorithms</h1>
                 <div class="card">
-                    <h2>Tree Balancing (AVL/B-Trees)</h2>
-                    <p>Databases use <strong>B-Trees</strong> because they are optimized for disk reads (wide and shallow), whereas memory-based apps use <strong>AVL Trees</strong>.</p>
+                    <h2>1. Time & Space Complexity</h2>
+                    <p>Always analyze your code using Big O notation:</p>
+                    <ul>
+                        <li><strong>O(1):</strong> Constant time (Array access).</li>
+                        <li><strong>O(log n):</strong> Logarithmic (Binary Search).</li>
+                        <li><strong>O(n):</strong> Linear (Linear Search).</li>
+                        <li><strong>O(n log n):</strong> Sorting (Merge Sort).</li>
+                        <li><strong>O(n²):</strong> Quadratic (Nested loops).</li>
+                    </ul>
+
+                    <h2>2. Linear Data Structures</h2>
+                    <h3>Arrays</h3>
+                    <p>Contiguous memory. Fast access O(1), slow insertion O(n). Use for fixed-size collections.</p>
+                    <div class="code-block"><pre>// Java Array Example
+int[] arr = new int[5];
+arr[0] = 1; // Access O(1)</pre></div>
+                    <div class="code-block"><pre># Python List (Dynamic Array)
+arr = [1, 2, 3]
+arr.append(4) # O(1) amortized</pre></div>
+
+                    <h3>Linked Lists</h3>
+                    <p>Non-contiguous. Fast insertion O(1), slow search O(n). Types: Singly, Doubly, Circular.</p>
+                    <div class="code-block"><pre>// Java Singly Linked List Node
+class Node {
+    int data;
+    Node next;
+    Node(int d) { data = d; }
+}</pre></div>
+                    <div class="code-block"><pre># Python Linked List
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None</pre></div>
+
+                    <h3>Stacks</h3>
+                    <p>LIFO. Used in recursion, undo. Operations: push, pop, peek O(1).</p>
+                    <div class="code-block"><pre>// Java Stack
+import java.util.Stack;
+Stack<Integer> stack = new Stack<>();
+stack.push(1);
+stack.pop();</pre></div>
+                    <div class="code-block"><pre># Python Stack (using list)
+stack = []
+stack.append(1) # push
+stack.pop() # pop</pre></div>
+
+                    <h3>Queues</h3>
+                    <p>FIFO. Used in scheduling, BFS. Operations: enqueue, dequeue O(1).</p>
+                    <div class="code-block"><pre>// Java Queue
+import java.util.LinkedList;
+Queue<Integer> queue = new LinkedList<>();
+queue.add(1); // enqueue
+queue.poll(); // dequeue</pre></div>
+                    <div class="code-block"><pre># Python Queue
+from collections import deque
+queue = deque()
+queue.append(1) # enqueue
+queue.popleft() # dequeue</pre></div>
+
+                    <h2>3. Sorting Algorithms</h2>
+                    <ul>
+                        <li><strong>Bubble Sort:</strong> O(n²). Repeatedly swap adjacent if wrong order.</li>
+                        <li><strong>Selection Sort:</strong> O(n²). Find min and swap to front.</li>
+                        <li><strong>Insertion Sort:</strong> O(n²). Build sorted array one by one.</li>
+                        <li><strong>Merge Sort:</strong> O(n log n). Divide and conquer, stable.</li>
+                        <li><strong>Quick Sort:</strong> O(n log n) avg, O(n²) worst. Pivot partitioning.</li>
+                    </ul>
+                    <div class="code-block"><pre>// Java Quick Sort
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi-1);
+        quickSort(arr, pi+1, high);
+    }
+}</pre></div>
+                    <div class="code-block"><pre># Python Merge Sort
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left = merge_sort(arr[:mid])
+        right = merge_sort(arr[mid:])
+        return merge(left, right)
+    return arr</pre></div>
+
+                    <h2>4. Searching Algorithms</h2>
+                    <ul>
+                        <li><strong>Linear Search:</strong> O(n). Check each element.</li>
+                        <li><strong>Binary Search:</strong> O(log n). On sorted array, divide half.</li>
+                    </ul>
+                    <div class="code-block"><pre>// Java Binary Search
+int binarySearch(int arr[], int x) {
+    int low = 0, high = arr.length - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (arr[mid] == x) return mid;
+        if (arr[mid] < x) low = mid + 1;
+        else high = mid - 1;
+    }
+    return -1;
+}</pre></div>
+                    <div class="code-block"><pre># Python Binary Search
+def binary_search(arr, x):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] < x:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1</pre></div>
+
+                    <h2>5. Non-Linear Data Structures</h2>
+                    <h3>Trees & BST</h3>
+                    <p>A Binary Search Tree (BST) allows search in O(h) where h is height. For a balanced tree, h = log n. Operations: Insert, Delete, Search O(log n) avg.</p>
+                    <div class="code-block"><pre>// Java BST Insert
+class Node {
+    int key;
+    Node left, right;
+}
+Node insert(Node node, int key) {
+    if (node == null) return new Node(key);
+    if (key < node.key) node.left = insert(node.left, key);
+    else if (key > node.key) node.right = insert(node.right, key);
+    return node;
+}</pre></div>
+                    <div class="code-block"><pre># Python BST
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = self.right = None
+def insert(node, key):
+    if node is None:
+        return Node(key)
+    if key < node.key:
+        node.left = insert(node.left, key)
+    elif key > node.key:
+        node.right = insert(node.right, key)
+    return node</pre></div>
+                    <p>AVL Trees: Self-balancing BST with rotations for O(log n) guarantee.</p>
                     <canvas id="dsaCanvas" width="600" height="200" style="width:100%; height:150px; background:#000; border-radius:8px;"></canvas>
                     <button class="btn btn-outline" style="margin-top:10px" onclick="visualizeAVL()">Simulate AVL Rotation</button>
+
+                    <h3>Graphs</h3>
+                    <p>Nodes and edges. Representations: Adjacency List/Matrix. Traversals: BFS (Queue), DFS (Stack/Recursion).</p>
+                    <div class="code-block"><pre>// Java BFS
+void bfs(int start, ArrayList<ArrayList<Integer>> adj) {
+    boolean[] vis = new boolean[adj.size()];
+    Queue<Integer> q = new LinkedList<>();
+    q.add(start); vis[start] = true;
+    while (!q.isEmpty()) {
+        int node = q.poll();
+        System.out.print(node + " ");
+        for (int neighbor : adj.get(node)) {
+            if (!vis[neighbor]) {
+                vis[neighbor] = true;
+                q.add(neighbor);
+            }
+        }
+    }
+}</pre></div>
+                    <div class="code-block"><pre># Python DFS
+def dfs(node, adj, vis):
+    vis[node] = True
+    print(node, end=' ')
+    for neighbor in adj[node]:
+        if not vis[neighbor]:
+            dfs(neighbor, adj, vis)</pre></div>
+
+                    <h2>6. LeetCode Medium Problems</h2>
+                    <h3>Two Sum</h3>
+                    <p>Given array nums and target, return indices of two numbers that add to target.</p>
+                    <div class="code-block"><pre>// Java Solution
+public int[] twoSum(int[] nums, int target) {
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int complement = target - nums[i];
+        if (map.containsKey(complement)) {
+            return new int[] { map.get(complement), i };
+        }
+        map.put(nums[i], i);
+    }
+    return null;
+}</pre></div>
+                    <div class="code-block"><pre># Python Solution
+def twoSum(nums, target):
+    prevMap = {}
+    for i, n in enumerate(nums):
+        diff = target - n
+        if diff in prevMap:
+            return [prevMap[diff], i]
+        prevMap[n] = i</pre></div>
+
+                    <h3>Group Anagrams</h3>
+                    <p>Group strings that are anagrams.</p>
+                    <div class="code-block"><pre>// Java Solution
+public List<List<String>> groupAnagrams(String[] strs) {
+    Map<String, List<String>> map = new HashMap<>();
+    for (String s : strs) {
+        char[] chars = s.toCharArray();
+        Arrays.sort(chars);
+        String key = new String(chars);
+        map.computeIfAbsent(key, k -> new ArrayList<>()).add(s);
+    }
+    return new ArrayList<>(map.values());
+}</pre></div>
+                    <div class="code-block"><pre># Python Solution
+from collections import defaultdict
+def groupAnagrams(strs):
+    ans = defaultdict(list)
+    for s in strs:
+        count = [0] * 26
+        for c in s:
+            count[ord(c) - ord("a")] += 1
+        ans[tuple(count)].append(s)
+    return ans.values()</pre></div>
                 </div>
-                <button class="btn btn-success" onclick="markDone('dsa')">Mark DSA Ready</button>
+                
+                ${renderQuiz('dsa', [{
+                    q: "Time complexity of Binary Search?", 
+                    options:["O(n)", "O(log n)", "O(n log n)"], 
+                    a:1, 
+                    exp:"Divides search space in half each time."
+                }, {
+                    q: "Stack follows?", 
+                    options:["FIFO", "LIFO", "Random"], 
+                    a:1, 
+                    exp:"Last In First Out."
+                }, {
+                    q: "BFS uses?", 
+                    options:["Stack", "Queue", "Heap"], 
+                    a:1, 
+                    exp:"Queue for level-order traversal."
+                }])}
+                <button class="btn btn-success" onclick="markDone('dsa')">Complete DSA Module</button>
             `,
 
-            cn: () => `
-                <h1>Computer Networks & API Mapping</h1>
+            programming: () => `
+                <h1>Coding & Debugging Round</h1>
                 <div class="card">
-                    <h2>API Data Mapping</h2>
-                    <p>A crucial skill for Impetus: Mapping JSON responses to UI components.</p>
-                    <p><strong>Example:</strong> Database uses <code>user_id</code> (snake_case), but UI needs <code>userId</code> (camelCase). This transformation happens in the <strong>Service Layer</strong>.</p>
+                    <h2>1. Java Internals</h2>
+                    <p>Java is "Compiled and Interpreted." The compiler creates Bytecode, which the JVM interprets. JVM: Manages memory, garbage collection (Young/Old Gen).</p>
+                    <h3>String Pool</h3>
+                    <p>Strings are immutable in Java. Literals are stored in a special "String Constant Pool" to save memory. "hello" == "hello" is true, but new String("hello") == "hello" is false.</p>
+
+                    <h2>2. Python Internals</h2>
+                    <p>Python uses a <strong>Global Interpreter Lock (GIL)</strong>, which allows only one thread to execute at a time. This makes multi-threading in Python less efficient for CPU-bound tasks. Use multiprocessing for parallelism.</p>
+
+                    <h2>3. Debugger Challenge</h2>
+                    <p>Spot the error in this Java logic. If 's' is null, calling <code>.equals()</code> will throw a NullPointerException.</p>
+                    <div class="code-block"><pre>String s = null;
+// Fails if s is null
+if(s.equals("IMPETUS")) { ... }
+
+// Better approach
+if("IMPETUS".equals(s)) { ... }</pre></div>
+                    <input type="text" id="debug-ans" class="search-box" placeholder="What prevents NPE? (e.g. Swapping or Null Check)">
+                    <button class="btn btn-primary" onclick="checkDebug()">Verify Solution</button>
+                    <div id="debug-feedback"></div>
+
+                    <h2>4. LeetCode Medium Problems</h2>
+                    <h3>Two Sum</h3>
+                    <p>Given array nums and target, return indices of two numbers that add to target. O(n) using hashmap.</p>
+                    <div class="code-block"><pre>// Java
+public int[] twoSum(int[] nums, int target) {
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int complement = target - nums[i];
+        if (map.containsKey(complement)) return new int[]{map.get(complement), i};
+        map.put(nums[i], i);
+    }
+    return null;
+}</pre></div>
+                    <div class="code-block"><pre># Python
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i</pre></div>
+
+                    <h3>Group Anagrams</h3>
+                    <p>Group anagrams together. Use sorted string or char count as key.</p>
+                    <div class="code-block"><pre>// Java
+public List<List<String>> groupAnagrams(String[] strs) {
+    Map<String, List<String>> map = new HashMap<>();
+    for (String s : strs) {
+        char[] ca = s.toCharArray();
+        Arrays.sort(ca);
+        String key = String.valueOf(ca);
+        map.computeIfAbsent(key, k -> new ArrayList<>()).add(s);
+    }
+    return new ArrayList<>(map.values());
+}</pre></div>
+                    <div class="code-block"><pre># Python
+from collections import defaultdict
+def group_anagrams(strs):
+    groups = defaultdict(list)
+    for s in strs:
+        key = ''.join(sorted(s))
+        groups[key].append(s)
+    return list(groups.values())</pre></div>
+
+                    <h3>Graph BFS/DFS Example</h3>
+                    <p>BFS for shortest path, DFS for traversal.</p>
+                    <div class="code-block"><pre>// Java BFS Graph
+void bfs(List<List<Integer>> graph, int start) {
+    boolean[] visited = new boolean[graph.size()];
+    Queue<Integer> q = new LinkedList<>();
+    q.add(start); visited[start] = true;
+    while (!q.isEmpty()) {
+        int u = q.poll();
+        for (int v : graph.get(u)) {
+            if (!visited[v]) {
+                visited[v] = true;
+                q.add(v);
+            }
+        }
+    }
+}</pre></div>
+                    <div class="code-block"><pre># Python DFS Graph
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    for neighbor in graph[start]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
+    return visited</pre></div>
                 </div>
-                <div class="card">
-                    <h2>JWT Authentication</h2>
-                    <p>Stateless authentication for scaling. Token contains: <strong>Header, Payload, and Signature.</strong></p>
-                </div>
-                <button class="btn btn-success" onclick="markDone('cn')">Mark CN Ready</button>
+                
+                ${renderQuiz('programming', [{
+                    q: "Python GIL affects?", 
+                    options:["Multi-threading", "Multi-processing", "Single-thread"], 
+                    a:0, 
+                    exp:"GIL limits multi-threading for CPU-bound tasks."
+                }, {
+                    q: "Two Sum optimal time?", 
+                    options:["O(n^2)", "O(n)", "O(n log n)"], 
+                    a:1, 
+                    exp:"Use hashmap for O(n)."
+                }])}
+                <button class="btn btn-success" onclick="markDone('programming')">Complete Coding Module</button>
             `,
 
             os: () => `
-                <h1>Operating Systems & Storage</h1>
+                <h1>Operating Systems</h1>
                 <div class="card">
-                    <h2>Thrashing & Virtual Memory</h2>
-                    <p><strong>Thrashing:</strong> When the OS spends more time swapping pages than executing processes. Solution: Reduce the number of active processes or add more RAM.</p>
+                    <h2>1. Process vs Thread</h2>
+                    <ul>
+                        <li><strong>Process:</strong> An independent program in execution. Has its own memory space, resources. Heavyweight, context switching costly.</li>
+                        <li><strong>Thread:</strong> A lightweight sub-process within a process. Shares memory, resources. Faster context switching, but shared data needs synchronization.</li>
+                    </ul>
+                    <p>Multi-threading: Multiple threads in one process (e.g., browser tabs). Multi-processing: Multiple processes (e.g., separate apps).</p>
+
+                    <h2>2. Memory Management</h2>
+                    <ul>
+                        <li><strong>Paging:</strong> Dividing memory into fixed-size blocks (pages) to eliminate external fragmentation. Page table maps logical to physical addresses.</li>
+                        <li><strong>Segmentation:</strong> Variable-size blocks based on logical divisions (code, data). Suffers internal fragmentation.</li>
+                        <li><strong>Virtual Memory:</strong> Allows execution of processes larger than physical memory using swapping (page in/out). Thrashing: Excessive swapping due to low memory.</li>
+                    </ul>
+                    <p>Page Replacement Algorithms: FIFO, LRU (Least Recently Used), Optimal.</p>
+
+                    <h2>3. Deadlocks</h2>
+                    <p>A state where two or more processes are blocked, waiting for each other to release resources.</p>
+                    <p><strong>Conditions for Deadlock (Coffman):</strong></p>
+                    <ul>
+                        <li>Mutual Exclusion: Resources can't be shared.</li>
+                        <li>Hold and Wait: Holding resources while waiting for others.</li>
+                        <li>No Preemption: Can't force release.</li>
+                        <li>Circular Wait: Processes form a cycle.</li>
+                    </ul>
+                    <p>Prevention: Avoid one condition, e.g., Banker's Algorithm for resource allocation.</p>
+                    <p>Detection: Resource Allocation Graph, wait-for graph.</p>
+
+                    <h2>4. Process Scheduling</h2>
+                    <ul>
+                        <li><strong>FCFS:</strong> First Come First Serve. Simple, but convoy effect.</li>
+                        <li><strong>SJF:</strong> Shortest Job First. Optimal average waiting time, but starvation.</li>
+                        <li><strong>Priority:</strong> Based on priority. Can cause starvation (aging solves).</li>
+                        <li><strong>Round Robin:</strong> Time quantum, fair, good for time-sharing.</li>
+                        <li><strong>Multilevel Queue:</strong> Different queues for priorities.</li>
+                    </ul>
+
+                    <h2>5. File Systems</h2>
+                    <p>Manages files on disk. Types: FAT, NTFS, ext4.</p>
+                    <ul>
+                        <li><strong>Allocation Methods:</strong> Contiguous (fast, fragmentation), Linked (no fragmentation, slow access), Indexed (fast access, overhead).</li>
+                        <li><strong>Directory Structure:</strong> Single-level, Two-level, Tree (hierarchical).</li>
+                        <li><strong>Access Methods:</strong> Sequential, Direct, Indexed.</li>
+                    </ul>
                 </div>
+                
+                ${renderQuiz('os', [{
+                    q: "Threads share?", 
+                    options:["Memory space", "Separate memory", "Nothing"], 
+                    a:0, 
+                    exp:"Threads share process memory for efficiency."
+                }, {
+                    q: "Deadlock prevention avoids?", 
+                    options:["Mutual Exclusion", "All conditions", "Circular Wait"], 
+                    a:1, 
+                    exp:"Prevent by breaking one of the four conditions."
+                }, {
+                    q: "Round Robin uses?", 
+                    options:["Priority", "Time quantum", "Shortest time"], 
+                    a:1, 
+                    exp:"Preemptive with fixed time slices."
+                }])}
+                <button class="btn btn-success" onclick="markDone('os')">Complete OS Module</button>
+            `,
+
+            cn: () => `
+                <h1>Computer Networks</h1>
                 <div class="card">
-                    <h2>Context Switching</h2>
-                    <p>Saving the state of a process so it can be resumed later. High overhead, so we prefer <strong>Threads</strong> over Processes for UI tasks.</p>
+                    <h2>1. OSI Model Layers</h2>
+                    <p>7-layer reference model for networking. Learn bottom-up:</p>
+                    <ol>
+                        <li><strong>Physical (Layer 1):</strong> Bits, cables, hubs. Deals with transmission media.</li>
+                        <li><strong>Data Link (Layer 2):</strong> MAC addresses, frames, switches. Error detection (CRC).</li>
+                        <li><strong>Network (Layer 3):</strong> IP addresses, packets, routers. Routing (OSPF, BGP).</li>
+                        <li><strong>Transport (Layer 4):</strong> TCP/UDP, segments, ports. End-to-end delivery.</li>
+                        <li><strong>Session (Layer 5):</strong> Managing connections, synchronization.</li>
+                        <li><strong>Presentation (Layer 6):</strong> Data translation, encryption (SSL).</li>
+                        <li><strong>Application (Layer 7):</strong> HTTP, FTP, DNS. User interfaces.</li>
+                    </ol>
+                    <p>TCP/IP Model: 4 layers - Network Access (1-2), Internet (3), Transport (4), Application (5-7).</p>
+
+                    <h2>2. TCP vs UDP</h2>
+                    <ul>
+                        <li><strong>TCP:</strong> Connection-oriented, reliable, ordered, congestion control. 3-way handshake: SYN, SYN-ACK, ACK. Use: Web, email.</li>
+                        <li><strong>UDP:</strong> Connectionless, unreliable, no order. Faster, low overhead. Use: Streaming, DNS, gaming.</li>
+                    </ul>
+                    <p>Differences: TCP has acknowledgments, retransmission; UDP no guarantees but quicker.</p>
+
+                    <h2>3. HTTP Basics</h2>
+                    <p>Application protocol for web. Stateless, request-response. Methods: GET (retrieve), POST (send data), PUT (update), DELETE.</p>
+                    <p>HTTPS: Secure version with SSL/TLS encryption.</p>
+
+                    <h2>4. DNS (Domain Name System)</h2>
+                    <p>Translates domain names to IP addresses. Hierarchical: Root servers, TLD (.com), Authoritative servers.</p>
+                    <p>Process: Resolver queries recursive server, which queries root -> TLD -> authoritative.</p>
+
+                    <h2>5. Routing Basics</h2>
+                    <p>Process of selecting paths in a network. Static vs Dynamic (RIP, OSPF).</p>
+                    <p>Routing Tables: Store next-hop info. Algorithms: Distance Vector (RIP), Link State (OSPF).</p>
                 </div>
-                <button class="btn btn-success" onclick="markDone('os')">Mark OS Ready</button>
+                
+                ${renderQuiz('cn', [{
+                    q: "TCP is?", 
+                    options:["Connectionless", "Connection-oriented", "Stateless"], 
+                    a:1, 
+                    exp:"Establishes connection with 3-way handshake."
+                }, {
+                    q: "DNS resolves?", 
+                    options:["IP to Domain", "Domain to IP", "MAC to IP"], 
+                    a:1, 
+                    exp:"Domain Name System maps names to IPs."
+                }])}
+                <button class="btn btn-success" onclick="markDone('cn')">Complete CN Module</button>
+            `,
+
+            cloud: () => `
+                <h1>Cloud Technologies & S3</h1>
+                <div class="card">
+                    <h2>1. Service Models</h2>
+                    <ul>
+                        <li><strong>IaaS (Infrastructure as a Service):</strong> Virtual machines, storage (AWS EC2). You manage OS, apps.</li>
+                        <li><strong>PaaS (Platform as a Service):</strong> Development platforms (Azure App Service). You manage code, data.</li>
+                        <li><strong>SaaS (Software as a Service):</strong> Ready apps (Google Workspace). You manage nothing.</li>
+                    </ul>
+
+                    <h2>2. Deployment Models</h2>
+                    <ul>
+                        <li><strong>Public Cloud:</strong> AWS, Azure, GCP. Shared infrastructure, cost-effective.</li>
+                        <li><strong>Private Cloud:</strong> On-premise, dedicated. High security.</li>
+                        <li><strong>Hybrid Cloud:</strong> Mix, for bursting to public during peaks.</li>
+                    </ul>
+
+                    <h2>3. AWS Services</h2>
+                    <ul>
+                        <li><strong>EC2 (Elastic Compute Cloud):</strong> Virtual servers. Scalable, pay-per-use. Example: Launch instance with AMI, configure security groups.</li>
+                        <li><strong>S3 (Simple Storage Service):</strong> Object storage for data lakes. Highly durable (99.999999999%), versioning, lifecycle policies. Buckets store objects (key-value).</li>
+                        <li><strong>Lambda:</strong> Serverless compute. Run code without provisioning servers.</li>
+                        <li><strong>RDS:</strong> Managed databases (MySQL, PostgreSQL).</li>
+                    </ul>
+
+                    <h2>4. Azure & GCP Basics</h2>
+                    <ul>
+                        <li><strong>Azure Virtual Machines:</strong> Similar to EC2.</li>
+                        <li><strong>Azure Blob Storage:</strong> Like S3.</li>
+                        <li><strong>GCP Compute Engine:</strong> VMs.</li>
+                        <li><strong>GCP Cloud Storage:</strong> Object storage.</li>
+                    </ul>
+
+                    <h2>5. Scalability & High Availability</h2>
+                    <p><strong>Vertical Scaling:</strong> Add resources to single instance (limited).</p>
+                    <p><strong>Horizontal Scaling:</strong> Add more instances (Auto Scaling Groups in AWS).</p>
+                    <p>Load Balancers: Distribute traffic. Fault Tolerance: Multi-AZ deployments.</p>
+                </div>
+                
+                ${renderQuiz('cloud', [{
+                    q: "S3 is for?", 
+                    options:["Compute", "Object Storage", "Database"], 
+                    a:1, 
+                    exp:"Simple Storage Service for scalable object storage."
+                }, {
+                    q: "IaaS example?", 
+                    options:["EC2", "Lambda", "Gmail"], 
+                    a:0, 
+                    exp:"Infrastructure like virtual machines."
+                }])}
+                <button class="btn btn-success" onclick="markDone('cloud')">Complete Cloud Module</button>
+            `,
+
+            projects: () => `
+                <h1>Project Discussion Strategy</h1>
+                <div class="card">
+                    <h2>1. The STAR Method</h2>
+                    <p>Structure your project answers like this:</p>
+                    <ul>
+                        <li><strong>S: Situation</strong> - Context of the project (e.g., "Built a data dashboard for university").</li>
+                        <li><strong>T: Task</strong> - Your specific role (e.g., "Handled backend DB and frontend UI").</li>
+                        <li><strong>A: Action</strong> - What technical steps you took (e.g., "Used SQL joins for queries, Gestalt for layout").</li>
+                        <li><strong>R: Result</strong> - Quantified impact (e.g., "Reduced query time by 30%, improved user satisfaction").</li>
+                    </ul>
+                    <p>Impetus asks: Challenges faced? (e.g., API integration bugs). How fixed? (Debugging with Postman). Components/APIs used? (RESTful, JWT auth). Concepts (MVC pattern).</p>
+
+                    <h2>2. Technical Architecture Analyzer</h2>
+                    <p>Paste your project description below to see which keywords an interviewer might target.</p>
+                    <textarea id="proj-in" class="search-box" style="height:100px" placeholder="Paste project description..."></textarea>
+                    <button class="btn btn-primary" onclick="analyzeProj()">Analyze Architecture</button>
+                    <div id="proj-out" style="margin-top:10px"></div>
+                </div>
+            `,
+
+            hr: () => `
+                <h1>HR Interview Strategy</h1>
+                <div class="card">
+                    <h2>1. Self-Introduction</h2>
+                    <p>Keep 1-2 mins: "I'm Abhishek Paliwal, CS student at MIT Ujjain. Skilled in DBMS, UI/UX, Java/Python. Built [project] using [tech], reducing [metric]. Excited about Impetus's data platforms."</p>
+
+                    <h2>2. Why IMPETUS?</h2>
+                    <p>Good Answer: "Impressed by Impetus's leadership in high-performance data engineering and GenAI. My focus on database optimization and UI scalability aligns with your work on intelligent data platforms like LeapLogic and Prism."</p>
+                    
+                    <h2>3. Strengths & Weaknesses</h2>
+                    <p><strong>Strengths:</strong> Quick learner, team player, problem-solver. Example: "Optimized SQL queries in project, reducing latency by 40%."</p>
+                    <p><strong>Weaknesses:</strong> Choose improvable: "I sometimes over-focus on details, but I'm improving by setting priorities." Avoid clichés like 'perfectionist'.</p>
+
+                    <h2>4. Common HR Questions</h2>
+                    <ul>
+                        <li>Where do you see yourself in 5 years? "Contributing to innovative data solutions at Impetus, perhaps as a lead engineer."</li>
+                        <li>Why should we hire you? "My blend of DB expertise and UI skills bridges backend efficiency with user-centric design, aligning with Impetus's intelligent platforms."</li>
+                        <li>Salary expectations? Research: "Based on market, 6-8 LPA for freshers."</li>
+                        <li>Any questions? "What growth opportunities for freshers in data engineering?"</li>
+                    </ul>
+                </div>
+                <button class="btn btn-success" onclick="markDone('hr')">Complete HR Module</button>
             `,
 
             mock: () => `
                 <h1>Mock Interview Engine</h1>
                 <div id="mock-container">
                     <div id="mock-timer">Ready</div>
-                    <div id="question-area">Press START for an Impetus Technical Question.</div>
-                    <div id="controls">
-                        <button class="btn btn-primary" onclick="startMock()">START SESSION</button>
+                    <div id="question-area">Press START for an IMPETUS-specific interview simulation.</div>
+                    <textarea id="answer-input" style="display:none" placeholder="Draft your response here to keep your thoughts organized..."></textarea>
+                    <div id="controls" style="margin-top:1.5rem">
+                        <button class="btn btn-primary" id="m-btn" onclick="startMock()">START SIMULATION</button>
                     </div>
                 </div>
-            `,
-            // Fallback for missing pages
-            programming: () => `<h1>Data Programming Round</h1><div class="card"><p>Focus on string manipulation and SQL aggregation.</p></div>`,
-            cloud: () => `<h1>Cloud & Big Data</h1><div class="card"><p>Focus on AWS S3 and Data Lakes.</p></div>`,
-            projects: () => `<h1>Projects Guide</h1><div class="card"><p>Focus on explaining your DB Schema and UI Flows.</p></div>`,
-            hr: () => `<h1>HR Preparation</h1><div class="card"><p>Focus on the STAR method and "Why Impetus?".</p></div>`
+            `
         };
 
         // --- Logic Implementations ---
+        function startMock() {
+            const btn = document.getElementById('m-btn');
+            const area = document.getElementById('question-area');
+            const timer = document.getElementById('mock-timer');
+            const input = document.getElementById('answer-input');
+            
+            btn.style.display = 'none';
+            input.style.display = 'block';
+            
+            const qs = [
+                "Briefly introduce yourself, highlighting your interest in DB and UI.",
+                "Explain ACID properties. Why are they critical for data platforms?",
+                "What is the difference between Abstraction and Encapsulation? Use a real-world example.",
+                "How do you design a dashboard to prevent cognitive overload for the user?",
+                "What is a deadlock and what are the four conditions required for it to occur?",
+                "Why should we hire you at Impetus Technologies?",
+                "Explain the OSI model layers and where IP addresses are used.",
+                "How to take one string and do Permutations and Combinations without using stored procedures?",
+                "How to check and get 3 highest used words in a string?",
+                "Explain how API mapping is performed and which tool is used (e.g., Postman).",
+                "Describe your experience with C, C++, Java, SQL, and DBMS.",
+                "What is the difference between comp1 and comp3?",
+                "What is salary expectation?",
+                "What was your previous CTC?",
+                "What is your expected CTC?",
+                "Explain the concept of 'Sharding' in Big Data environments.",
+                "Difference between a clustered and non-clustered index.",
+                "What is your biggest weakness?",
+                "Why Impetus Technologies?",
+                "Explain a project challenge and how you overcame it."
+            ];
+            
+            let idx = 0;
+            const next = () => {
+                if(idx < qs.length) {
+                    area.innerText = qs[idx];
+                    if('speechSynthesis' in window) {
+                        speechSynthesis.cancel();
+                        speechSynthesis.speak(new SpeechSynthesisUtterance(qs[idx]));
+                    }
+                    let time = 45; // Increased time for more detailed response practice
+                    timer.innerText = time;
+                    const itv = setInterval(() => {
+                        time--;
+                        timer.innerText = time;
+                        if(time <= 0) {
+                            clearInterval(itv);
+                            idx++;
+                            next();
+                        }
+                    }, 1000);
+                } else {
+                    area.innerText = "Mock Interview Simulation Complete! Focus on your weakest areas now.";
+                    timer.innerText = "DONE";
+                    input.style.display = 'none';
+                    btn.style.display = 'inline-flex';
+                    btn.innerText = "RESTART";
+                }
+            };
+            next();
+        }
+
+        function checkDebug() {
+            const val = document.getElementById('debug-ans').value.toLowerCase();
+            const out = document.getElementById('debug-feedback');
+            if(val.includes('"impetus".equals(s)') || val.includes('check null') || val.includes('swapping')) {
+                out.innerHTML = "<p style='color:var(--success)'>Correct! Swapping the literal to the front or adding a null check prevents a NullPointerException.</p>";
+            } else { out.innerHTML = "<p style='color:var(--danger)'>Try again. Hint: Think about the order of comparison when one side might be null.</p>"; }
+        }
+
+        function analyzeProj() {
+            const text = document.getElementById('proj-in').value.toLowerCase();
+            const out = document.getElementById('proj-out');
+            let fb = "<h4>Technical Interview Analysis:</h4><ul>";
+            if(text.includes('sql') || text.includes('db') || text.includes('database')) {
+                fb += "<li><strong>DB Strengths:</strong> Expect questions on your schema normalization and query indexing choices.</li>";
+            }
+            if(text.includes('ui') || text.includes('ux') || text.includes('frontend')) {
+                fb += "<li><strong>UI Strengths:</strong> Be ready to explain the design heuristics or accessibility standards you followed.</li>";
+            }
+            if(!text.includes('api') && !text.includes('rest')) {
+                fb += "<li><strong>Missing Link:</strong> Consider mentioning how your UI interacted with the data (e.g., RESTful APIs or JWT).</li>";
+            }
+            fb += "<li><strong>Predicted Question:</strong> How did you handle data consistency between the backend and your UI?</li>";
+            fb += "<li><strong>Impetus Focus:</strong> Discuss components, APIs used, challenges like API mapping with Postman, and concepts like MVC.</li></ul>";
+            out.innerHTML = fb;
+        }
+
         function initDSAVisualizer() {
             const canvas = document.getElementById('dsaCanvas');
             if(!canvas) return;
             const ctx = canvas.getContext('2d');
             ctx.fillStyle = '#06b6d4';
+            ctx.font = '16px Inter';
             ctx.textAlign = 'center';
-            ctx.fillText("AVL Tree Logic Visualizer", 300, 100);
+            ctx.fillText("AVL Balancing Visualization - Ready", 300, 100);
         }
 
         function visualizeAVL() {
@@ -562,55 +1367,15 @@
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0,0,600,200);
             ctx.fillStyle = '#10b981';
-            ctx.fillText("Rotating Tree... Rebalancing Complete.", 300, 100);
+            ctx.textAlign = 'center';
+            ctx.fillText("Unbalanced Tree -> Left Rotation -> Balanced Height", 300, 100);
+            ctx.strokeRect(200, 80, 200, 40);
         }
 
-        const MOCK_QUESTIONS = [
-            "What is the difference between a primary key and a unique key?",
-            "How do you ensure a design is accessible for users with color blindness?",
-            "What is a deadlock and how does the OS detect it?",
-            "Explain the concept of 'Sharding' in Big Data environments.",
-            "Difference between a clustered and non-clustered index.",
-            "How do you handle 'Cognitive Overload' in a complex data dashboard?",
-            "Explain the 3-way handshake in TCP.",
-            "Why is 'Normalization' important for transactional data?"
-        ];
-
-        function startMock() {
-            let i = 0;
-            const qArea = document.getElementById('question-area');
-            const timer = document.getElementById('mock-timer');
-            
-            const next = () => {
-                if(i < MOCK_QUESTIONS.length) {
-                    const q = MOCK_QUESTIONS[i];
-                    qArea.innerText = q;
-                    if('speechSynthesis' in window) {
-                        speechSynthesis.speak(new SpeechSynthesisUtterance(q));
-                    }
-                    let time = 30;
-                    timer.innerText = time;
-                    const interval = setInterval(() => {
-                        time--;
-                        timer.innerText = time;
-                        if(time <= 0) {
-                            clearInterval(interval);
-                            i++;
-                            next();
-                        }
-                    }, 1000);
-                } else {
-                    qArea.innerText = "Mock Interview Complete!";
-                }
-            };
-            next();
-        }
-
-        // --- Init ---
+        // --- Init App ---
         window.onload = () => {
             navigate('dashboard');
         };
-
     </script>
 </body>
 </html>
